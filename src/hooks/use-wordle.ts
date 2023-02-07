@@ -11,7 +11,9 @@ export const useWordle = (solution: string) => {
 
     const addNewGuess = () => {}
 
-    const handleKeyup = () => {}
+    const handleKeyup = (e: KeyboardEvent) => {
+        console.log(e.key)
+    }
 
     return {
         turn,
