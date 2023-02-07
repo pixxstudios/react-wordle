@@ -12,7 +12,15 @@ export const useWordle = (solution: string) => {
     const addNewGuess = () => {}
 
     const handleKeyup = (e: KeyboardEvent) => {
-        console.log(e.key)
+        if(e.key === 'Backspace') {
+            setCurrentGuess(prev => prev.slice(0, -1))
+        }
+
+        if(/^[a-zA-Z]$/.test(e.key)) {
+            if(currentGuess.length < 5) {
+                setCurrentGuess(prev => prev + e.key)
+            }
+        }
     }
 
     return {

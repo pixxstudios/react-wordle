@@ -16,6 +16,6 @@ export const Wordle = ({ solution }: WordleProps) => {
     
 
     return (
-        <div>{solution}</div>
+        <div>{currentGuess}</div>
     )
 }
