@@ -1,14 +1,18 @@
 import { useState } from "react"
 
+type FormatGuess = {
+    key: string;
+    color: string;
+}[];
+
 export const useWordle = (solution: string) => {
     const [turn, setTurn] = useState(0)
     const [currentGuess, setCurrentGuess] = useState('')
-    const [guesses, setGuesses] = useState([]) // guesses as formatted array
+    const [guesses, setGuesses] = useState<FormatGuess[]>([]) // guesses as formatted array
     const [history, setHistory] = useState<string[]>([]) // gusses as string
     const [isCorrect, setIsCorrect] = useState(false)
 
-    const formatGuess = () => {
-        console.log('formatting ', currentGuess, solution)
+    const formatGuess = (): FormatGuess => {
         const solutionArray: Array<string|null> = [...solution]
         const formattedGuess = [...currentGuess].map(letter => {
             return ({
@@ -36,13 +40,23 @@ export const useWordle = (solution: string) => {
         return formattedGuess
     }
 
-    const addNewGuess = () => {}
+    const addNewGuess = (formattedGuess: FormatGuess) => {
+        console.log('solution ', solution)
+        if (currentGuess === solution) {
+            setIsCorrect(true)
+        }
+
+        setGuesses([...guesses, formattedGuess])
+        setHistory([...history, currentGuess])
+        setTurn(turn + 1)
+        setCurrentGuess('')
+    }
 
     const handleKeyup = (e: KeyboardEvent) => {
         if (e.key === 'Enter') {
             if(turn > 5 || history.includes(currentGuess) || currentGuess.length !== 5) return;
-            const formatted = formatGuess()
-            console.log(formatted)
+            const formattedGuess = formatGuess()
+            addNewGuess(formattedGuess)
         }
 
         if(e.key === 'Backspace') {
