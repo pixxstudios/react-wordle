@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { useWordle } from '../hooks/use-wordle'
+import { Guess } from './guess'
 
 type WordleProps = {
     solution: string
@@ -7,7 +8,7 @@ type WordleProps = {
 
 export const Wordle = ({ solution }: WordleProps) => {
     const { currentGuess, handleKeyup, guesses, isCorrect, turn } = useWordle(solution)
-    
+
     useEffect(() => {
       window.addEventListener('keyup', handleKeyup)
 
@@ -19,6 +20,6 @@ export const Wordle = ({ solution }: WordleProps) => {
     }),[guesses, isCorrect, turn]    
 
     return (
-        <div>{currentGuess}</div>
+        <Guess currentGuess={currentGuess} guesses={guesses} turn={turn} />
     )
 }
