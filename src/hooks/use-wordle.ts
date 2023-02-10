@@ -8,7 +8,7 @@ type FormatGuess = {
 export const useWordle = (solution: string) => {
     const [turn, setTurn] = useState(0)
     const [currentGuess, setCurrentGuess] = useState('')
-    const [guesses, setGuesses] = useState<FormatGuess[]>([]) // guesses as formatted array
+    const [guesses, setGuesses] = useState<FormatGuess[]>([...Array(6)]) // guesses as formatted array
     const [history, setHistory] = useState<string[]>([]) // gusses as string
     const [isCorrect, setIsCorrect] = useState(false)
 
@@ -46,9 +46,15 @@ export const useWordle = (solution: string) => {
             setIsCorrect(true)
         }
 
-        setGuesses([...guesses, formattedGuess])
-        setHistory([...history, currentGuess])
-        setTurn(turn + 1)
+        setGuesses(prevGuesses => {
+            const newGuesses = [...prevGuesses]
+            newGuesses[turn] = formattedGuess
+            return newGuesses
+        })
+        setHistory(prevHistory => {
+            return [...prevHistory, currentGuess]
+        })
+        setTurn(prevTurn => prevTurn + 1)
         setCurrentGuess('')
     }
 
