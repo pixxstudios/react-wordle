@@ -12,7 +12,7 @@ export const Guess = ({ currentGuess, guesses, turn }: GuessProps) => {
   return (
     <div>
         {
-            guesses.map((guess, index) => <Row key={index} />)
+            guesses.map((guess, index) => <Row key={index} guess={guess} />)
         }
     </div>
   )
