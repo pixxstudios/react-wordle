@@ -11,7 +11,9 @@ type RowProps = {
 export const Row = ({guess}: RowProps) => {
   return (
     <div className='row'>
-       { guess ? guess.map(g => <div>{g.key}</div>) : 
+       { guess ?
+        guess.map((g, i) => <div key={i} className={g.color}>{g.key}</div>)
+        : 
         <>
             <div></div>
             <div></div>
