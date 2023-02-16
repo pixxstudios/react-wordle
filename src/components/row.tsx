@@ -1,4 +1,3 @@
-import React from 'react'
 import '../index.css';
 
 type RowProps = {
@@ -10,12 +9,15 @@ type RowProps = {
 }
 
 export const Row = ({guess, currentGuess}: RowProps) => {
-
     if (guess) {
-    return (
-    <div className='row past'>
-        {guess.map((g, i) => <div key={i} className={g.color}>{g.key}</div>)}
-    </div>
+        return (
+            <div className='row past'>
+                {
+                    guess.map((g, i) => (
+                        <div key={i} className={g.color}>{g.key}</div>)
+                    )
+                }
+            </div>
     )}
       
     if (currentGuess) {
@@ -31,14 +33,14 @@ export const Row = ({guess, currentGuess}: RowProps) => {
             </div>
         )
     }
-        
+
     return (
-    <>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-    </>
+        <div className='row'>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
     )
 }
