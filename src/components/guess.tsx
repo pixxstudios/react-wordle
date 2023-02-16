@@ -1,14 +1,13 @@
-import React from 'react'
 import { FormatGuess } from '../hooks/use-wordle'
 import { Row } from './row'
 
-type GuessProps = {
+type GridProps = {
     currentGuess: string
     guesses: FormatGuess[]
     turn: number
 }
 
-export const Guess = ({ currentGuess, guesses, turn }: GuessProps) => {
+export const Grid = ({ currentGuess, guesses, turn }: GridProps) => {
   return (
     <div>
         {

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useWordle } from '../hooks/use-wordle'
-import { Guess } from './guess'
+import { Grid } from './guess'
 
 type WordleProps = {
     solution: string
@@ -20,6 +20,6 @@ export const Wordle = ({ solution }: WordleProps) => {
     }),[guesses, isCorrect, turn]    
 
     return (
-        <Guess currentGuess={currentGuess} guesses={guesses} turn={turn} />
+        <Grid currentGuess={currentGuess} guesses={guesses} turn={turn} />
     )
 }
