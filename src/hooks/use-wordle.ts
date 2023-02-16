@@ -41,7 +41,6 @@ export const useWordle = (solution: string) => {
     }
 
     const addNewGuess = (formattedGuess: FormatGuess) => {
-        console.log('solution ', solution)
         if (currentGuess === solution) {
             setIsCorrect(true)
         }

@@ -15,10 +15,6 @@ export const Wordle = ({ solution }: WordleProps) => {
       return () => window.removeEventListener('keyup', handleKeyup)
     }, [handleKeyup])
     
-    useEffect(() => {
-        console.log(guesses, isCorrect, turn)
-    }),[guesses, isCorrect, turn]    
-
     return (
         <Grid currentGuess={currentGuess} guesses={guesses} turn={turn} />
     )
