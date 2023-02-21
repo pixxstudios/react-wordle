@@ -6,6 +6,7 @@ export type FormatGuess = {
 }[];
 
 export const useWordle = (solution: string) => {
+    console.log('solution', solution)
     const [turn, setTurn] = useState(0)
     const [currentGuess, setCurrentGuess] = useState('')
     const [guesses, setGuesses] = useState<FormatGuess[]>([...Array(6)]) // guesses as formatted array

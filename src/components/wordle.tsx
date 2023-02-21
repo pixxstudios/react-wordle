@@ -13,8 +13,12 @@ export const Wordle = ({ solution }: WordleProps) => {
     useEffect(() => {
       window.addEventListener('keyup', handleKeyup)
 
+      if (isCorrect || turn > 5) {
+        window.removeEventListener('keyup', handleKeyup)
+      }
+
       return () => window.removeEventListener('keyup', handleKeyup)
-    }, [handleKeyup])
+    }, [handleKeyup, isCorrect, turn])
     
     return (
         <>
