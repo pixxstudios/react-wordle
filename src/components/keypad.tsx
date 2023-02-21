@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 
-export const Keypad = () => {
+type Props = {
+    usedKeys: {[key:string]: string }
+}
+
+export const Keypad = ({usedKeys}: Props) => {
     const [letters, setLetters] = useState([
         {"key": "a"},
         {"key": "b"},
@@ -33,9 +37,10 @@ export const Keypad = () => {
     return (
         <div className='keypad'>
             {
-                letters.map(letter => (
-                    <div key={letter.key}>{letter.key}</div>
-                ))
+                letters.map(letter => {
+                    const color = usedKeys[letter.key]
+                    return <div key={letter.key} className={color}>{letter.key}</div>
+                })
             }
         </div>
     )

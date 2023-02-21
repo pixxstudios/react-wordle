@@ -8,7 +8,7 @@ type WordleProps = {
 }
 
 export const Wordle = ({ solution }: WordleProps) => {
-    const { currentGuess, handleKeyup, guesses, isCorrect, turn } = useWordle(solution)
+    const { currentGuess, handleKeyup, guesses, isCorrect, turn, usedKeys } = useWordle(solution)
 
     useEffect(() => {
       window.addEventListener('keyup', handleKeyup)
@@ -19,7 +19,7 @@ export const Wordle = ({ solution }: WordleProps) => {
     return (
         <>
         <Grid currentGuess={currentGuess} guesses={guesses} turn={turn} />
-        <Keypad />
+        <Keypad usedKeys={usedKeys} />
         </>
     )
 }
