@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const Keypad = () => {
+export const Keypad = () => {
     const [letters, setLetters] = useState([
         {"key": "a"},
         {"key": "b"},
@@ -31,6 +31,12 @@ const Keypad = () => {
       ]);
 
     return (
-        <div>Keypad</div>
+        <div className='keypad'>
+            {
+                letters.map(letter => (
+                    <div key={letter.key}>{letter.key}</div>
+                ))
+            }
+        </div>
     )
 }

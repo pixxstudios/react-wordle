@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { useWordle } from '../hooks/use-wordle'
 import { Grid } from './guess'
+import { Keypad } from './keypad';
 
 type WordleProps = {
     solution: string
@@ -16,6 +17,9 @@ export const Wordle = ({ solution }: WordleProps) => {
     }, [handleKeyup])
     
     return (
+        <>
         <Grid currentGuess={currentGuess} guesses={guesses} turn={turn} />
+        <Keypad />
+        </>
     )
 }
